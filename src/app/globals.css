@@ -1,0 +1,272 @@
+@import "tailwindcss";
+
+@theme {
+  --color-espresso: #1c1412;
+  --color-espresso-soft: #2a201c;
+  --color-gold: #c9a66b;
+  --color-gold-light: #e8d3a6;
+  /* Darker gold for text on cream (AA ≈ 5.9:1) */
+  --color-gold-deep: #7a5a2a;
+  --color-blush: #e8d5c8;
+  --color-cream: #faf5ef;
+  --color-ink: #1a1614;
+
+  --font-serif: var(--font-display), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-body), "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-espresso);
+    color: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    background: var(--color-espresso);
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-espresso);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+  .on-cream :focus-visible {
+    outline-color: var(--color-gold-deep);
+  }
+}
+
+/* ---------- Type scale ---------- */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+@utility headline-xl {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(4rem, 10.5vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+@utility headline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+}
+@utility gutter {
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2.5rem;
+  }
+  @media (width >= 80rem) {
+    padding-inline: 4.5rem;
+  }
+}
+
+/* ---------- Smooth scroll ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.is-loading {
+    overflow: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Film grain & light leaks ---------- */
+.film-grain {
+  position: fixed;
+  inset: -100%;
+  width: 300%;
+  height: 300%;
+  pointer-events: none;
+  z-index: 70;
+  opacity: 0.075;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.9s steps(6) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4%, 3%); }
+  40% { transform: translate(3%, -5%); }
+  60% { transform: translate(-6%, -2%); }
+  80% { transform: translate(5%, 4%); }
+  100% { transform: translate(-2%, 6%); }
+}
+
+.light-leak {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(40% 35% at 82% 18%, rgb(233 190 120 / 0.38), transparent 70%),
+    radial-gradient(30% 30% at 12% 78%, rgb(201 166 107 / 0.22), transparent 70%),
+    radial-gradient(25% 22% at 60% 60%, rgb(255 214 170 / 0.12), transparent 70%);
+  animation: leak 14s var(--ease-luxe) infinite alternate;
+}
+@keyframes leak {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.75; }
+  50% { transform: translate3d(-4%, 3%, 0) scale(1.08); opacity: 1; }
+  100% { transform: translate3d(3%, -2%, 0) scale(1.02); opacity: 0.8; }
+}
+
+/* ---------- Gold button with shimmer sweep ---------- */
+.btn-gold {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.1rem 2.4rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, #b8925a, var(--color-gold) 40%, #e3c58f 60%, var(--color-gold));
+  color: var(--color-espresso);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: box-shadow 0.8s var(--ease-luxe);
+}
+.btn-gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 25%, rgb(255 255 255 / 0.65) 50%, transparent 75%);
+  transform: translateX(-130%);
+}
+.btn-gold:hover,
+.btn-gold:focus-visible {
+  box-shadow: 0 18px 50px -18px rgb(201 166 107 / 0.75);
+}
+.btn-gold:hover::after,
+.btn-gold:focus-visible::after {
+  transform: translateX(130%);
+  transition: transform 1.2s var(--ease-luxe);
+}
+.btn-gold[data-idle-shimmer]::after {
+  animation: idle-shimmer 5s var(--ease-luxe) 2s infinite;
+}
+@keyframes idle-shimmer {
+  0%, 70% { transform: translateX(-130%); }
+  100% { transform: translateX(130%); }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.8rem;
+  border-radius: 999px;
+  border: 1px solid rgb(201 166 107 / 0.45);
+  color: var(--color-cream);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: background-color 0.6s var(--ease-luxe), border-color 0.6s var(--ease-luxe), color 0.6s var(--ease-luxe);
+}
+.btn-ghost:hover {
+  background: rgb(201 166 107 / 0.12);
+  border-color: var(--color-gold);
+}
+
+/* ---------- Artist portraits: desaturated until hover (hover devices only) ---------- */
+@media (hover: hover) {
+  .artist-photo {
+    filter: grayscale(0.9) contrast(1.05) brightness(0.92);
+    transition: filter 1.2s var(--ease-luxe);
+  }
+  .group:hover .artist-photo,
+  .group:focus-within .artist-photo {
+    filter: grayscale(0) contrast(1) brightness(1);
+  }
+}
+
+/* Placeholder "before" look for transformations without a real before photo */
+.simulate-before {
+  filter: grayscale(0.65) sepia(0.15) brightness(0.78) contrast(0.82) saturate(0.6) blur(0.4px);
+}
+
+/* Scroll indicator */
+@keyframes scroll-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(260%); }
+}
+.scroll-cue {
+  animation: scroll-cue 2.4s var(--ease-luxe) infinite;
+}
+
+/* Form fields */
+.field {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgb(250 245 239 / 0.28);
+  padding: 0.85rem 0;
+  color: var(--color-cream);
+  font-size: 1rem;
+  font-weight: 300;
+  border-radius: 0;
+  transition: border-color 0.5s var(--ease-luxe);
+}
+.field:hover {
+  border-color: rgb(250 245 239 / 0.5);
+}
+.field:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+.field:focus-visible {
+  outline: none;
+  box-shadow: 0 1px 0 0 var(--color-gold);
+}
+.field[aria-invalid="true"] {
+  border-color: #e8a598;
+}
+.field option {
+  background: var(--color-espresso);
+  color: var(--color-cream);
+}
+.field::placeholder {
+  color: rgb(250 245 239 / 0.45);
+}
+input[type="date"].field::-webkit-calendar-picker-indicator {
+  filter: invert(0.85) sepia(0.4);
+}
