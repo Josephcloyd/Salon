@@ -152,7 +152,7 @@ export function BookingForm() {
       </Field>
 
       <div className="mt-6 flex flex-col items-center gap-5 md:col-span-2">
-        <span data-strand-bow className="inline-block">
+        <span className="inline-block">
           <button ref={submitRef} type="submit" disabled={isSending} data-idle-shimmer className="btn-gold min-w-[280px] disabled:opacity-70">
             {isSending ? "Sending…" : "Book an Appointment"}
           </button>

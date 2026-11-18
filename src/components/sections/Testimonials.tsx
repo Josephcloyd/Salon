@@ -38,7 +38,7 @@ export function Testimonials() {
   );
 
   return (
-    <section ref={root} data-strand="loose" data-strand-x="0.88" aria-labelledby="quotes-title" className="relative overflow-hidden bg-espresso py-32 md:py-48">
+    <section ref={root} aria-labelledby="quotes-title" className="relative overflow-hidden bg-espresso py-32 md:py-48">
       <div data-haze className="absolute -inset-y-[10%] inset-x-0" aria-hidden="true">
         <Image src={testimonialBackdrop.src} alt="" fill sizes="50vw" quality={40} className="scale-125 object-cover opacity-45 blur-3xl [filter:sepia(0.8)_saturate(1.4)]" />
         <div className="absolute inset-0 bg-[radial-gradient(50%_45%_at_30%_30%,rgb(201_166_107/0.4),transparent_70%),radial-gradient(45%_40%_at_75%_70%,rgb(232_213_200/0.22),transparent_70%)]" />
@@ -56,7 +56,7 @@ export function Testimonials() {
         <ul className="mt-20 grid gap-8 md:grid-cols-2 md:gap-x-14">
           {testimonials.map((t, i) => (
             <li key={t.name} data-quote className={`will-change-transform ${OFFSET[i % OFFSET.length]}`}>
-              <figure className="relative border border-gold/30 bg-espresso/55 p-8 backdrop-blur-md md:p-12">
+              <figure className="relative border border-gold/30 bg-espresso-soft/90 p-8 md:p-12">
                 <span className="absolute -top-7 left-8 font-serif text-8xl leading-none text-gold" aria-hidden="true">
                   “
                 </span>

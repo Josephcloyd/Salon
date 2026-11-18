@@ -31,11 +31,11 @@ export function Stats() {
   );
 
   return (
-    <section ref={root} data-strand="wave" data-strand-x="0.9" aria-labelledby="stats-title" className="relative overflow-hidden bg-espresso py-28 md:py-36">
+    <section ref={root} aria-labelledby="stats-title" className="relative overflow-hidden bg-espresso py-28 md:py-36">
       <div className="light-leak opacity-60" aria-hidden="true" />
       <div className="gutter relative mx-auto max-w-[1440px]">
         <h2 id="stats-title" className="eyebrow text-center text-gold">
-          <span data-strand-wrap className="inline-block px-3 py-2">Numbers that matter</span>
+          <span className="inline-block px-3 py-2">Numbers that matter</span>
         </h2>
         <dl className="mt-16 grid grid-cols-2 gap-y-16 lg:grid-cols-4">
           {stats.map((stat) => {

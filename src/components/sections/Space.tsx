@@ -45,7 +45,7 @@ export function Space() {
   );
 
   return (
-    <section ref={root} id="space" data-strand="sleek" data-strand-x="0.94" aria-labelledby="space-title" className="relative bg-espresso">
+    <section ref={root} id="space" aria-labelledby="space-title" className="relative bg-espresso">
       <div ref={stage} className="relative h-[100svh] overflow-hidden">
         <div data-door className="absolute inset-0">
           <div data-door-img className="absolute inset-0 will-change-transform">

@@ -28,20 +28,14 @@ Service-card "from ₱…" prices are derived from the menu automatically.
 src/
   app/                 layout (fonts, metadata), page (sections + JSON-LD), globals.css (tokens)
   components/sections/ one component per section
-  components/strand/   The Golden Strand: geometry.ts (pure math), GoldenStrand.tsx (render), shimmer.ts (particles)
-  components/ui/       Preloader, Navbar, Cursor, SmoothScroll (Lenis), SplitLetters
+  components/ui/       Preloader, Navbar, SectionDivider, Cursor, SmoothScroll (Lenis), SplitLetters
   hooks/               useMagnetic, useTilt, useMediaQuery
   lib/                 gsap setup + motion queries, reusable animations, formatting, booking validation, schema
   data/salon.ts        all content
 ```
 
-### The Golden Strand
+### Chapter dividers
 
-Sections declare how the strand behaves through data attributes, with no strand code in the sections themselves:
-
-- `data-strand="sleek | wave | loose | curl"` plus optional `data-strand-x="0.9"` (resting x as a fraction of the width)
-- `data-strand-wrap` on an inline element: the strand curls around it
-- `data-strand-bow` on the CTA: the strand ends by tying a bow around it
-
-On mobile the strand is simplified (no wraps or curls, coarser path, no particles).
-With `prefers-reduced-motion` it is drawn statically, and pinning, scrubbing, parallax and the preloader are disabled.
+Editorial chapter breaks (`<SectionDivider chapter={n} label="..." />`) sit between sections in `src/app/page.tsx`.
+Two gold hairlines draw outward from the chapter number when the divider scrolls into view (IntersectionObserver + CSS transforms only).
+With `prefers-reduced-motion` they are shown statically, and pinning, scrubbing, parallax and the preloader are disabled.

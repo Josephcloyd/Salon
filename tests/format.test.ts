@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatNumber, formatPeso, formatPrice } from "@/lib/format";
+import { formatChapter, formatNumber, formatPeso, formatPrice } from "@/lib/format";
 
 describe("formatPeso", () => {
   it("adds the peso sign and comma separators", () => {
@@ -23,5 +23,17 @@ describe("formatPrice", () => {
   it("prefixes 'from' for variable prices", () => {
     expect(formatPrice({ price: 2800, from: true })).toBe("from ₱2,800");
     expect(formatPrice({ price: 450 })).toBe("₱450");
+  });
+});
+
+describe("formatChapter", () => {
+  it("pads chapter numbers to two digits", () => {
+    expect(formatChapter(1)).toBe("01");
+    expect(formatChapter(9)).toBe("09");
+    expect(formatChapter(12)).toBe("12");
+  });
+  it("rejects non-positive or fractional numbers", () => {
+    expect(() => formatChapter(0)).toThrow(/positive integer/);
+    expect(() => formatChapter(1.5)).toThrow(/positive integer/);
   });
 });

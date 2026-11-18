@@ -9,7 +9,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Space } from "@/components/sections/Space";
 import { Booking } from "@/components/sections/Booking";
 import { Footer } from "@/components/sections/Footer";
-import { GoldenStrand } from "@/components/strand/GoldenStrand";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import { buildSalonSchema } from "@/lib/schema";
 
 export default function Home() {
@@ -22,17 +22,23 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Philosophy />
+        <SectionDivider chapter={1} label="Services" />
         <Services />
+        <SectionDivider chapter={2} label="The Menu" />
         <PriceMenu />
+        <SectionDivider chapter={3} label="The Artists" />
         <Artists />
+        <SectionDivider chapter={4} label="Transformations" />
         <Transformations />
+        <SectionDivider chapter={5} label="By the Numbers" />
         <Stats />
         <Testimonials />
+        <SectionDivider chapter={6} label="The Space" />
         <Space />
+        <SectionDivider chapter={7} label="Reservations" />
         <Booking />
       </main>
       <Footer />
-      <GoldenStrand />
     </>
   );
 }

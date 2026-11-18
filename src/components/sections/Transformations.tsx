@@ -24,7 +24,7 @@ export function Transformations() {
   );
 
   return (
-    <section ref={root} id="transformations" data-strand="curl" data-strand-x="0.93" aria-labelledby="tf-title" className="relative bg-espresso-soft py-28 md:py-40">
+    <section ref={root} id="transformations" aria-labelledby="tf-title" className="relative bg-espresso-soft py-28 md:py-40">
       <div className="gutter mx-auto max-w-[1440px]">
         <header data-tf-head className="max-w-3xl">
           <p className="eyebrow text-gold">Transformations</p>

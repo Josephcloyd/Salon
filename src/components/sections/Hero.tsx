@@ -65,8 +65,8 @@ export function Hero() {
     <section
       ref={root}
       id="top"
-      data-strand="loose"
-      data-strand-x="0.8"
+     
+     
       aria-labelledby="hero-title"
       className="relative h-[100svh] min-h-[600px] overflow-hidden bg-espresso"
     >

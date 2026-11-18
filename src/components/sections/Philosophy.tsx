@@ -55,7 +55,7 @@ export function Philosophy() {
   );
 
   return (
-    <section ref={root} id="philosophy" data-strand="wave" data-strand-x="0.9" aria-labelledby="philosophy-title" className="relative bg-espresso">
+    <section ref={root} id="philosophy" aria-labelledby="philosophy-title" className="relative bg-espresso">
       <div ref={stage} className="relative overflow-hidden motion-safe:h-[100svh]">
         <h2 id="philosophy-title" className="eyebrow gutter absolute left-0 top-24 z-20 text-gold">
           Our Philosophy

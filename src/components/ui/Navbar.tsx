@@ -54,7 +54,7 @@ export function Navbar() {
       <div
         className={`transition-[transform,background-color,backdrop-filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isHidden && !isMenuOpen ? "-translate-y-full" : "translate-y-0"
-        } ${isScrolled ? "bg-espresso/55 backdrop-blur-xl" : "bg-transparent"}`}
+        } ${isScrolled ? "bg-espresso/85 backdrop-blur-md" : "bg-transparent"}`}
       >
         <nav aria-label="Main" className="gutter flex h-[72px] items-center justify-between">
           <a href="#top" onClick={(e) => handleAnchor(e, "#top")} className="group flex items-center gap-3">

@@ -109,14 +109,21 @@ html.lenis body {
 /* ---------- Film grain & light leaks ---------- */
 .film-grain {
   position: fixed;
-  inset: -100%;
-  width: 300%;
-  height: 300%;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
   pointer-events: none;
   z-index: 70;
   opacity: 0.075;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  will-change: transform;
   animation: grain 0.9s steps(6) infinite;
+}
+/* Static grain on touch devices: the animated layer costs more than it adds there */
+@media (max-width: 1023.98px), (prefers-reduced-motion: reduce) {
+  .film-grain {
+    animation: none;
+  }
 }
 @keyframes grain {
   0% { transform: translate(0, 0); }
@@ -269,4 +276,52 @@ html.lenis body {
 }
 input[type="date"].field::-webkit-calendar-picker-indicator {
   filter: invert(0.85) sepia(0.4);
+}
+
+/* ---------- Editorial chapter dividers ---------- */
+.chapter-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-block: 3.5rem;
+}
+.chapter-divider__line {
+  flex: 1;
+  height: 1px;
+  transform: scaleX(0);
+  transition: transform 1.6s var(--ease-luxe) 0.15s;
+}
+.chapter-divider__line--left {
+  transform-origin: right center;
+  background: linear-gradient(to left, rgb(201 166 107 / 0.7), rgb(201 166 107 / 0));
+}
+.chapter-divider__line--right {
+  transform-origin: left center;
+  background: linear-gradient(to right, rgb(201 166 107 / 0.7), rgb(201 166 107 / 0));
+}
+.chapter-divider__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 1s var(--ease-luxe), transform 1s var(--ease-luxe);
+}
+.chapter-divider[data-visible="true"] .chapter-divider__line {
+  transform: scaleX(1);
+}
+.chapter-divider[data-visible="true"] .chapter-divider__mark {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .chapter-divider__line,
+  .chapter-divider__mark {
+    transform: none;
+    opacity: 1;
+    transition: none;
+  }
 }

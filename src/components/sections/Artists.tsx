@@ -36,13 +36,13 @@ export function Artists() {
   );
 
   return (
-    <section ref={root} id="artists" data-strand="loose" data-strand-x="0.9" aria-labelledby="artists-title" className="relative bg-espresso py-28 md:py-40">
+    <section ref={root} id="artists" aria-labelledby="artists-title" className="relative bg-espresso py-28 md:py-40">
       <div className="gutter mx-auto max-w-[1440px]">
         <header data-artists-head className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-end">
           <div>
             <p className="eyebrow text-gold">Meet the Artists</p>
             <h2 id="artists-title" className="headline mt-6 text-cream">
-              <span data-strand-wrap className="inline-block pr-2">
+              <span className="inline-block pr-2">
                 The hands <em className="text-gold-light">behind</em>
               </span>
               <br />

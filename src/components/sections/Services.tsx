@@ -64,7 +64,7 @@ export function Services() {
   );
 
   return (
-    <section ref={root} id="services" data-strand="sleek" data-strand-x="0.95" aria-labelledby="services-title" className="relative bg-espresso py-24 lg:py-0">
+    <section ref={root} id="services" aria-labelledby="services-title" className="relative bg-espresso py-24 lg:py-0">
       <div ref={viewport} className="overflow-hidden lg:motion-safe:flex lg:motion-safe:h-[100svh] lg:motion-safe:items-center">
         <div
           ref={track}

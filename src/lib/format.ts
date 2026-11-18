@@ -17,3 +17,9 @@ export function formatNumber(value: number, decimals = 0): string {
 export function formatPrice(item: { price: number; from?: boolean }): string {
   return item.from ? `from ${formatPeso(item.price)}` : formatPeso(item.price);
 }
+
+/** Chapter number for section dividers: 3 -> "03" */
+export function formatChapter(n: number): string {
+  if (!Number.isInteger(n) || n < 1) throw new RangeError(`Chapter must be a positive integer, got ${n}`);
+  return String(n).padStart(2, "0");
+}

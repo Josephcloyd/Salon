@@ -22,7 +22,7 @@ export function Booking() {
   );
 
   return (
-    <section ref={root} id="book" data-strand="wave" data-strand-x="0.6" aria-labelledby="book-title" className="relative overflow-hidden bg-espresso py-28 md:py-40">
+    <section ref={root} id="book" aria-labelledby="book-title" className="relative overflow-hidden bg-espresso py-28 md:py-40">
       <div className="absolute inset-0" aria-hidden="true">
         <Image src={bookingBackdrop.src} alt="" fill sizes="100vw" quality={50} className="object-cover opacity-25 [filter:sepia(0.5)_brightness(0.6)]" />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,#1c1412_0%,rgb(28_20_18/0.75)_40%,#1c1412_100%)]" />

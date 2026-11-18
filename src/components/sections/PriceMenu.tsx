@@ -75,12 +75,12 @@ export function PriceMenu() {
   };
 
   return (
-    <section ref={root} id="menu" data-strand="sleek" data-strand-x="0.94" aria-labelledby="menu-title" className="on-cream relative bg-cream py-28 text-ink md:py-40">
+    <section ref={root} id="menu" aria-labelledby="menu-title" className="on-cream relative bg-cream py-28 text-ink md:py-40">
       <div className="gutter mx-auto max-w-6xl">
         <header data-menu-head className="text-center">
           <p className="eyebrow text-gold-deep">The Menu</p>
           <h2 id="menu-title" className="headline mt-6">
-            <span data-strand-wrap className="inline-block px-2">
+            <span className="inline-block px-2">
               Price <em className="text-gold-deep">Menu</em>
             </span>
           </h2>
